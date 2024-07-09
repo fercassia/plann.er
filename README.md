@@ -42,6 +42,8 @@ Documentação do layout: [Figma](https://www.figma.com/community/file/139227720
 
 3. Para a criação de uma tabela contida no prisma `npx prisma migrate dev` ou `npm run psm:migrate-dev`.
 
+4. Para a visualização dos dados  contidos nas tabelas do prisma `npx prisma studio` ou `npm run psm:open`.
+
 ## Architecture
 
 - `src`: Diretório responsável por armazenar arquivos de serviços.
