@@ -17,22 +17,45 @@ model Trip {
   ends_at      DateTime // Data Fim viagem
   created_at   DateTime @default(now()) //Data viagem criada
   is_confirmed Boolean  @default(false) // Viagem confirmada
-  
-  participants Participant [] // Relacionamento Fk Participantes da viagem
+
+  participants Participant[] // Relacionamento Fk Participantes da viagem
+  activities     Activity[]
+  links         Link[]
 
   @@map("trips") // Nome desejado na tabela
 }
 
 model Participant {
-
-  id           String   @id @default(uuid())
+  id           String  @id @default(uuid())
   name         String? //Nome do participante opcional
   email        String //Email do participante opcional
-  is_confirmed Boolean  @default(false) // Participante confirmado
-  is_owner     Boolean  @default(false) // Participante é o dono da viagem
-  trip_id        String
+  is_confirmed Boolean @default(false) // Participante confirmado
+  is_owner     Boolean @default(false) // Participante é o dono da viagem
+  trip_id      String
 
-  trip Trip     @relation(fields: [trip_id], references: [id])//Relacionamento Fk
+  trip Trip @relation(fields: [trip_id], references: [id]) //Relacionamento Fk
 
   @@map("participants") // Nome desejado na tabela
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  title     String //Titulo da atividade
+  occurs_at DateTime //Data da atividade
+  trip_id   String
+
+  trip Trip @relation(fields: [trip_id], references: [id]) //Relacionamento Fk
+
+  @@map("activities")
+}
+
+model Link {
+  id      String @id @default(uuid())
+  title   String //Titulo do link
+  url     String //Url do link
+  trip_id String
+
+  trip Trip @relation(fields: [trip_id], references: [id]) //Relacionamento Fk
+
+  @@map("links")
 }
