@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//Criação de tabelas no banco de dados: model
+model Trip {
+  //Campo pk (@id) e o default (uuid) 
+  //(identificadores únicos que são gerados automaticamente de maneira aleatório)
+  id           String   @id @default(uuid())
+  destination  String //Localizaçâo viagem
+  starts_at    DateTime //Data Inicio da Viagem
+  ends_at      DateTime // Data Fim viagem
+  created_at   DateTime @default(now()) //Data viagem criada
+  is_confirmed Boolean  @default(false) // Viagem confirmada
+  
+  participants Participant [] // Relacionamento Fk Participantes da viagem
+
+  @@map("trips") // Nome desejado na tabela
+}
+
+model Participant {
+
+  id           String   @id @default(uuid())
+  name         String? //Nome do participante opcional
+  email        String //Email do participante opcional
+  is_confirmed Boolean  @default(false) // Participante confirmado
+  is_owner     Boolean  @default(false) // Participante é o dono da viagem
+  trip_id        String
+
+  trip Trip     @relation(fields: [trip_id], references: [id])//Relacionamento Fk
+
+  @@map("participants") // Nome desejado na tabela
+}
