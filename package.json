@@ -6,7 +6,8 @@
   "scripts": {
     "dev:watch": "tsx watch",
     "dev": "tsx",
-    "psm:migrate-dev": "prisma migrate dev"
+    "psm:migrate-dev": "prisma migrate dev",
+    "psm:open": "prisma studio"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "@prisma/client": "^5.16.1",
     "dayjs": "^1.11.11",
     "fastify": "^4.28.1",
