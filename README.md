@@ -9,7 +9,7 @@ Projeto criado durante os 3 dias do nlw - node.js. O projeto é conhecido como P
 
 Documentação do layout: [Figma](https://www.figma.com/community/file/1392277205162897872/nlw-journey-roteiro-de-viagem). 
 
-## Tecnologias utilizadas nos testes
+## Tecnologias utilizadas no Desenvolvimento
 
 - Node.js - [NVM Windows v20.15.0](https://github.com/coreybutler/nvm-windows)
 - TypeScript - [Versão 5.5.3](https://www.typescriptlang.org/) ; [Configuração](https://github.com/tsconfig/bases?tab=readme-ov-file)
@@ -24,7 +24,7 @@ Documentação do layout: [Figma](https://www.figma.com/community/file/139227720
 
 > Deve ter instalado na sua máquina `Node.js` e `npm` para rodar o projeto.
 
-## Installation
+## Instalação
 
 1. Clone o projeto `https://github.com/fercassia/plann.er.git`.
 
@@ -32,7 +32,7 @@ Documentação do layout: [Figma](https://www.figma.com/community/file/139227720
 
 3. Rode `npm install` (ou `npm i`) para instalar as dependências de desenvolvimento do package.json.
 
-## Execution
+## Execução
 
 1. Para a execução do projeto, rode o comando `npx tsx {nomeDoArquivo}` ou `npm run dev {nomeDoArquivo}`.
 
