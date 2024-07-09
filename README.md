@@ -50,7 +50,7 @@ Documentação do layout: [Figma](https://www.figma.com/community/file/139227720
        
      - `server.ts`: Arquivo responsável por iniciar aplicação e configurar porta servidor.
 
-    - `lib`: Diretório responsável por armazenar arquivos de rotas.
+    - `routes`: Diretório responsável por armazenar arquivos de rotas.
 
 
 - `prisma`: Diretório responsável por armazenar arquivos das tabelas dos bancos de dados.
