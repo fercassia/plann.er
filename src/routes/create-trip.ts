@@ -5,6 +5,8 @@ import { getMailClient } from "../lib/mail";
 import { dayjs } from "../lib/dayjs";
 import zod from "zod";
 import nodemailer from "nodemailer";
+import { ClientError } from "../errors/client-error";
+import { env } from "../env";
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -32,10 +34,10 @@ export async function createTrip(app: FastifyInstance) {
       } = request.body;
 
       if (dayjs(starts_at).isBefore(new Date())) {
-        throw new Error("Start date must be a future date");
+        throw new ClientError("Start date must be a future date");
       }
       if (dayjs(ends_at).isBefore(starts_at)) {
-        throw new Error("Ends date must be after starts date");
+        throw new ClientError("Ends date must be after starts date");
       }
 
       const trip = await prisma.trip.create({
@@ -65,7 +67,7 @@ export async function createTrip(app: FastifyInstance) {
       const formatedStartDate = dayjs(trip.starts_at).format("LL");
       const formatedEndsDate = dayjs(trip.ends_at).format("LL");
 
-      const confirmationLink = `http://localhost:4800/trips/${trip.id}/confirm`;
+      const confirmationLink = `${env.API_BASE_URL}/trips/${trip.id}/confirm`;
 
       //Enviar email para o dono da viagem
       const mail = await getMailClient();
